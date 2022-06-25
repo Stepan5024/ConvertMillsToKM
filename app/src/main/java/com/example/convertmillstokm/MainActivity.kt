@@ -19,20 +19,28 @@ class MainActivity : AppCompatActivity() {
         val inputMilles: EditText = findViewById(R.id.InputMilles)
         val inputKm: EditText = findViewById(R.id.InputKm)
 
-        //val toast: Toast = Toast.makeText(this, "19.9".toDouble().javaClass.toString(), Toast.LENGTH_SHORT)
-        //toast.show()
+        val myFirstDice = Dice(6)
+        println("Your ${myFirstDice.getNumSides()} sided dice rolled ${myFirstDice.roll()}!")
+
+        val mySecondDice = Dice(20)
+        println("Your ${mySecondDice.getNumSides()} sided dice rolled ${mySecondDice.roll()}!")
+
         button_milles_to_km.setOnClickListener {
             val toast: Toast
             if (inputMilles.text.toString() != "") {
                 toast = Toast.makeText(
                     this,
-                    "KM = ${((inputMilles.text.toString()
-                        .toFloat() / 0.62137 * 100.0).roundToLong() / 100.0)}",
+                    "KM = ${
+                        ((inputMilles.text.toString()
+                            .toFloat() / 0.62137 * 100.0).roundToLong() / 100.0)
+                    }",
                     Toast.LENGTH_SHORT
                 )
                 toast.show()
-                inputKm.setText(((inputMilles.text.toString()
-                    .toFloat() / 0.62137 * 100.0).roundToLong() / 100.0).toString())
+                inputKm.setText(
+                    ((inputMilles.text.toString()
+                        .toFloat() / 0.62137 * 100.0).roundToLong() / 100.0).toString()
+                )
             } else {
                 toast = Toast.makeText(this, "Укажите мили!", Toast.LENGTH_SHORT)
                 toast.show()
@@ -45,11 +53,15 @@ class MainActivity : AppCompatActivity() {
                 toast = Toast.makeText(
                     this,
                     "Milles = ${
-                        (inputKm.text.toString().toFloat() * 0.62137 * 100.0).roundToLong() / 100.0}",
+                        (inputKm.text.toString().toFloat() * 0.62137 * 100.0).roundToLong() / 100.0
+                    }",
                     Toast.LENGTH_SHORT
                 )
                 toast.show()
-                inputMilles.setText(((inputKm.text.toString().toFloat() * 0.62137 * 100.0).roundToLong() / 100.0).toString())
+                inputMilles.setText(
+                    ((inputKm.text.toString()
+                        .toFloat() * 0.62137 * 100.0).roundToLong() / 100.0).toString()
+                )
             } else {
                 toast = Toast.makeText(this, "Укажите километры!", Toast.LENGTH_SHORT)
                 toast.show()
